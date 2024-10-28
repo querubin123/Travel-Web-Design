@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap CDN -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Boostrap Icons -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <!-- Pikaday CSS theme -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+      <!-- Slick -->
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+      <title>Document</title>
+      <style>
+         *,*::before,*::after{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: "Lato", sans-serif;
+         font-weight:600;
+         font-style: normal;
+         }
+         .bg-header1{
+         height: 86vh;
+         width: 100%;
+         background-image:url('assets/header-BG3.jpg');
+         background-size: cover;background-position: center;
+         display: flex;
+         align-items: center;
+         }
+         .form-control:focus, .form-select:focus, .btn:focus {
+         box-shadow: none;
+         outline: none;
+         border-color:#F26600;
+         }
+         .btn:not(:focus), .form-control:not(:focus), .form-select:not(:focus){
+         border: none;
+         }
+         @media screen and (min-width:992px)  {
+         .form-select{
+         width: 22%;
+         }
+         }
+         .image-slider{
+         display: flex;
+         justify-content: center;
+         }
+         .arrow-left, .arrow-right {
+         position: absolute;
+         top: 43%; 
+         transform: translateY(-50%); 
+         font-size: 2rem; 
+         color: #F26600; 
+         z-index: 1001; 
+         cursor: pointer;
+         }
+         .arrow-left {
+         left: 0; 
+         }
+         .arrow-right {
+         right: 0;
+         }
+         /* For Chrome, Safari, Edge, Opera */
+         input[type="number"]::-webkit-outer-spin-button,
+         input[type="number"]::-webkit-inner-spin-button {
+         -webkit-appearance: none;
+         margin: 0;
+         }
+         /* For Firefox */
+         input[type="number"] {
+         -moz-appearance: textfield;
+         appearance: none;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Nav bar -->
+      <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-light">
+         <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="logo image" style="height:55px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu" aria-controls="navbarmenu" aria-expanded="false">
+            <span><i class="bi bi-list"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarmenu">
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="index.html" style="font-size: 1rem;color: #F26600;">Home</a>
+                  </li>
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="destinations.html" style="font-size: 1rem;color: #F26600;">Destinations</a>
+                  </li>
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="book.html" style="font-size: 1rem;color: #F26600;">Book</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="contact.html" style="font-size: 1rem;color: #F26600;">Contact</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <!-- Heading Title -->
+      <div class="container-fluid bg-header1">
+         <div class="container text-center text-light ">
+            <p class="h2 p-0 mt-0">Ready to Explore the World?</p>
+            <p class="p-0 mt-2 fw-bolder" style="font-size: 3rem;">We’ve got you. Let Journey <br>  help plan your journey.</p>
+         </div>
+      </div>
+      <!-- main -->
+      <main class="bg-light">
+         <section>
+            <div class="container">
+               <div class="row py-5 gy-4">
+                  <div class="col-md-7 rounded align-items-end h-auto" style="background-color: #f1efef;">
+                     <!-- Contact Form -->
+                     <form action="">
+                        <div class="form-group p-5">
+                           <p class="mb-4 fs-4">Reach out to us through this form.</p>
+                           <div class="form-floating mb-3">
+                              <input type="text" class="form-control" placeholder="Full Name" id="fullname">
+                              <label for="fullname" class="form-label"style="color: #F26600;">Full Name</label>
+                           </div>
+                           <div class="form-floating mb-3">
+                              <input type="email" class="form-control" placeholder="Email Address" id="address">
+                              <label for="address" class="form-label" style="color: #F26600;">Email Address</label>
+                           </div>
+                           <div class="form-floating mb-3">
+                              <input type="number" class="form-control" placeholder="Phone" onkeydown="return event.key !== 'e' && event.key !== 'E';" id="contact">
+                              <label for="contact" class="form-label" style="color: #F26600;">Phone</label>
+                           </div>
+                           <div class="form-floating mb-3">
+                              <textarea class="form-control" name="textarea" id="message" placeholder="Your Message" style="resize: vertical;height: 20vh;"></textarea>
+                              <label for="message" class="form-label" style="color: #F26600;">Your Message</label>
+                           </div>
+                           <div class="form-floating mb-3">
+                              <input type="number" class="form-control" placeholder="Phone" onkeydown="return event.key !== 'e' && event.key !== 'E';" id="contact">
+                              <label for="contact" class="form-label" style="color: #F26600;">Phone</label>
+                           </div>
+                           <div class="form-floating mb-3">
+                              <input type="text" class="form-control" placeholder="Exact Dates of Your Travel" id="datepicker">
+                              <label for="datepicker" class="form-label" style="color: #F26600;">Exact Dates of Your Travel</label>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="col-md-5 rounded align-items-center h-auto">
+                     <!--Quick Links -->
+                     <div class="px-5">
+                        <div class="d-flex justify-content-center align-items-start" style="white-space: pre;">
+                           <p style="letter-spacing: 3px; font-size: 0.8rem; margin-top: 8px;margin-right: 4px;">QUICK LINKS</p>
+                           <hr class="w-100 text-danger">
+                        </div>
+                        <ul class="list-group d-flex">
+                           <li class="list-group-item py-3 mb-3 border-2 rounded d-flex justify-content-between align-items-center" style="background-color: #F26600;">
+                              <a href="" class="text-light" style="text-decoration: none; flex-grow: 1;">Send a WhatsApp message</a>
+                              <i class="bi bi-chevron-right text-light" style="font-size: 0.7rem; padding: 2px;"></i>
+                           </li>
+                           <li class="list-group-item py-3 mb-3 border-2 rounded d-flex justify-content-between align-items-center"style="background-color: #F26600;">
+                              <a href="" class="text-light"  style="text-decoration: none; flex-grow: 1;">Send a Viber message</a>
+                              <i class="bi bi-chevron-right text-light" style="font-size: 0.7rem; padding: 2px;"></i>
+                           </li>
+                           <li class="list-group-item py-3 mb-3 border-2 rounded d-flex justify-content-between align-items-center"style="background-color: #F26600;">
+                              <a href="" class="text-light"  style="text-decoration: none; flex-grow: 1;">Send a Telegram message</a>
+                              <i class="bi bi-chevron-right text-light" style="font-size: 0.7rem; padding: 2px;"></i>
+                           </li>
+                           <li class="list-group-item py-3 mb-3 border-2 rounded d-flex justify-content-between align-items-center"style="background-color: #F26600;">
+                              <a href="" class="text-light"  style="text-decoration: none; flex-grow: 1;">info@journey.com</a>
+                              <i class="bi bi-chevron-right text-light" style="font-size: 0.7rem; padding: 2px;"></i>
+                           </li>
+                           <li class="list-group-item py-3 mb-3 border-2 rounded d-flex justify-content-between align-items-center"style="background-color: #F26600;">
+                              <a href="" class="text-light"  style="text-decoration: none; flex-grow: 1;">+63 999 999 9999</a>
+                              <i class="bi bi-chevron-right text-light" style="font-size: 0.7rem; padding: 2px;"></i>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- footer -->
+         <section>
+            <div class="container-fluid pt-4" style="background-color: #fff;">
+               <div class="container">
+                  <div class="row align-items-start">
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Support</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Coronavirus (COVID-19) FAQs</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Manage your trips</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Contact Customer Service</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Safety resource centre</a>
+                     </div>
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Discover</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Genius loyalty programme</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Seasonal and holiday deals</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Travel articles</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Journey for Business</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Traveller Review Awards</a>
+                     </div>
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Terms & Settings</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Privacy & cookies</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Terms and conditions</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Partner dispute</a>
+                     </div>
+                     <div class="col d-flex flex-column mb-5">
+                        <p class="m-0" style="font-size: 0.9rem;">About</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">About Journey</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">How we work</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Press centre</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Careers</a>
+                     </div>
+                     <hr>
+                     <p class="text-center lead" style="font-size: 0.8rem;">Journey is part of Travel Innovations Inc., a premier provider of online travel and related services worldwide. <br>© 2024 Journey™. All rights reserved.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <!-- Boostrap CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <!-- Pikaday calendar -->
+      <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+      <script>
+         var picker = new Pikaday({ 
+             field: document.getElementById('datepicker'),
+             altInput: true,
+             altFormat: "F j, Y",
+             dateFormat: "Y-m-d",
+         });
+         var picker = new Pikaday({ 
+             field: document.getElementById('datepicker1'),
+             altInput: true,
+             altFormat: "F j, Y",
+             dateFormat: "Y-m-d",
+         });
+      </script>
+      <!-- Slick -->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <!-- Slick JS File -->
+      <script src="slick.js"></script>
+   </body>
+</html>

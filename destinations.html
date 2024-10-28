@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap CDN -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Boostrap Icons -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <!-- Pikaday CSS theme -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+      <!-- Slick -->
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+      <title>Document</title>
+      <style>
+         *,*::before,*::after{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: "Lato", sans-serif;
+         font-weight:600;
+         font-style: normal;
+         }
+         .bg-header1{
+         height: 86vh;
+         width: 100%;
+         background-image:url('assets/header-BG1.jpg');
+         background-size: cover;
+         display: flex;
+         align-items: center;
+         }
+         .form-control:focus, .form-select:focus, .btn:focus {
+         box-shadow: none;
+         outline: none;
+         border: none;
+         }
+         .btn:not(:focus){
+         border: none;
+         }
+         @media screen and (min-width:992px)  {
+         .form-select{
+         width: 22%;
+         }
+         }
+         .image-slider{
+         display: flex;
+         justify-content: center;
+         }
+         .arrow-left, .arrow-right {
+         position: absolute;
+         top: 43%; 
+         transform: translateY(-50%); 
+         font-size: 2rem; 
+         color: #F26600; 
+         z-index: 1001; 
+         cursor: pointer;
+         }
+         .arrow-left {
+         left: 0; 
+         }
+         .arrow-right {
+         right: 0;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Nav bar -->
+      <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-light">
+         <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="logo image" style="height:55px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu" aria-controls="navbarmenu" aria-expanded="false">
+            <span><i class="bi bi-list"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarmenu">
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="index.html" style="font-size: 1rem;color: #F26600;">Home</a>
+                  </li>
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="destinations.html" style="font-size: 1rem;color: #F26600;">Destinations</a>
+                  </li>
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="book.html" style="font-size: 1rem;color: #F26600;">Book</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="contact.html" style="font-size: 1rem;color: #F26600;">Contact</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <!-- Search bar -->
+      <div class="container-fluid bg-header1">
+         <div class="container text-center">
+            <p class="h2 text-dark p-0 mt-0">Traveler’s Top Choice Awards!</p>
+            <p class="text-dark p-0 mt-2 fw-bolder" style="font-size: 3rem;">Top Destinations Worldwide</p>
+         </div>
+      </div>
+      <!-- main -->
+      <main class="bg-light">
+         <section>
+            <div class="container-fluid pt-5">
+            <div class="container">
+               <div class="row align-items-center">
+                  <div class="btn-group d-flex flex-column flex-md-row" style="width: 70%; white-space: pre;" style="width: 60%;">
+                     <button class="btn btn-outline-primary active rounded-pill me-2 py-2 mb-1"><i class="bi bi-graph-up-arrow"></i> Trending Destinations</button>
+                     <button class="btn btn-outline-primary border border-primary rounded-pill me-2 py-2 mb-1"><i class="bi bi-trophy"></i> Top Destinations</button>
+                     <button class="btn btn-outline-primary border border-primary rounded-pill me-2 py-2 mb-1"><i class="bi bi-tree"></i> Nature Destinations</button>
+                  </div>
+                  <div style="width: 70%;">
+                     <h2 class="text-dark fw-bolder mt-5 mb-3" style="font-size: 1.4rem;">Top Philippines Destinations</h2>
+                     <p class="lead mb-2" style="font-size: 1rem;">These dream destinations are probably already on your bucket list—and for good reason!</p>
+                     <p class="lead" style="font-size: 1rem;"> The Travelers’ Choice Awards Best of the Best honors the pinnacle of travel excellence, based on outstanding reviews and ratings from the Tripadvisor community over the past year. Out of 8 million listings, fewer than 1% reach this prestigious milestone.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Carousel Section -->
+         <section>
+            <div class="container-fluid pt-5">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <!-- Carousel -->
+                     <div class="col">
+                        <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+                           <div class="carousel-inner">
+                              <div class="carousel-item active" data-bs-interval="4000" >
+                                 <img src="assets/baguio_city.jpg" class="d-block w-100 rounded" alt="First slide" style="height: 300px; object-fit: cover;">
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="assets/boracay.jpg" class="d-block w-100 rounded" alt="Second slide" style="height: 300px; object-fit: cover;">
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="assets/chocolate-hills.jpg" class="d-block w-100 rounded" alt="Third slide" style="height: 300px; object-fit: cover;">  
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="assets/el-nido.jpg" class="d-block w-100 rounded" alt="Fourth slide" style="height: 300px; object-fit: cover;">
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="assets/manila.jpg" class="d-block w-100 rounded" alt="Fifth slide" style="height: 300px; object-fit: cover;">
+                              </div>
+                              <div class="carousel-item">
+                                 <img src="assets/tagaytay.jpg" class="d-block w-100 rounded" alt="Sixth slide" style="height: 300px; object-fit: cover;">
+                              </div>
+                           </div>
+                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                           <span class="visually-hidden">Previous</span>
+                           </button>
+                           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                           <span class="visually-hidden">Next</span>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row d-flex align-items-start py-4 mt-5">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/boracay.jpg" class="img-fluid rounded w-100" alt="boracay" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">01.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Boracay</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Known for its powdery white sand beaches, Boracay is a tropical paradise famous for vibrant nightlife, water activities, and luxury resorts.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row d-flex align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/el-nido.jpg" class="img-fluid rounded w-100" alt="Palawan" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">02.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Palawan (El Nido)</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           El Nido is a stunning archipelago with dramatic limestone cliffs, hidden lagoons, and some of the clearest waters perfect for diving and island hopping.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Cebu.jpg" class="img-fluid rounded w-100" alt="Cebu" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">03.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Cebu</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           A central hub for history, culture, and pristine beaches. Highlights include the historic Magellan’s Cross, Kawasan Falls, and beautiful island getaways like Bantayan and Malapascua.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Infographic -->
+                  <div class="row my-4">
+                     <div class="col-12 position-relative">
+                        <img src="assets/Infographic2.png" class="img-fluid rounded w-100" alt="Infographic2" style="height: 80vh; object-fit: cover;">
+                        <div class="position-absolute" style="top: 83%;right: 6%;transform:translate(-50%,-50%);">
+                           <button type="button" class="btn btn-primary rounded-pill border border-primary" style="padding: 14px 28px; font-size: 18px;">Book Now</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/chocolate-hills.jpg" class="img-fluid rounded w-100" alt="chocolate-hills" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">04.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Bohol</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Home to the iconic Chocolate Hills and tarsier sanctuaries. Bohol also offers stunning beaches, historic churches, and the Loboc River cruise.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Siargao.jpg" class="img-fluid rounded w-100" alt="Siargao" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">05.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Siargao</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Known as the "Surfing Capital of the Philippines," Siargao boasts world-class waves and beautiful lagoons, with a laid-back island atmosphere.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Coron1.jpg" class="img-fluid rounded w-100" alt="Coron" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">06.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Coron</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           A diver's paradise, Coron offers shipwreck diving, crystal-clear lakes like Kayangan Lake, and impressive coral reefs.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Infographic Card-->
+                  <div class="row my-3">
+                     <div class="col-12">
+                        <div class="rounded border d-flex flex-column flex-md-row justify-content-start align-items-center h-auto" style="background-color: #fff;">
+                           <img src="assets/guimaras.jpg" class="img-fluid rounded m-4" alt="guimaras" style="height: 140px; width: 140px; object-fit: cover; transform: rotate(-4deg);">
+                           <div class="flex-grow-1 d-flex flex-column justify-content-between align-self-center">
+                              <p class="fs-4 m-0">Wander the World</p>
+                              <h6 class="text-muted mt-2">
+                                 Dive into unique travel experiences, uncover new cultures, and create unforgettable memories. Whether you're seeking luxury, adventure, or off-the-beaten-path destinations, let your next journey be extraordinary.
+                              </h6>
+                           </div>
+                           <div class="p-3 d-flex justify-content-center align-self-end">
+                              <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-4 py-2 ms-auto" style="white-space: pre;"> View More</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/tagaytay.jpg" class="img-fluid rounded w-100" alt="Tagaytay" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">07.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Tagaytay</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Just a short drive from Manila, Tagaytay offers cool weather, panoramic views of Taal Volcano, and a peaceful retreat from the city.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Vigan.jpg" class="img-fluid rounded w-100" alt="Vigan" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">08.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Vigan</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           A UNESCO World Heritage site, Vigan is known for its well-preserved Spanish colonial architecture and cobblestone streets in the historic Calle Crisologo.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Batanes.jpg" class="img-fluid rounded w-100" alt="Batanes" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">09.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Batanes</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">With its rolling hills, dramatic cliffs, and stone houses, Batanes offers breathtaking landscapes and a quiet escape from the busy city life.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/mount-apo.jpg" class="img-fluid rounded w-100" alt="Davao" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">10.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Davao</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">Famous for Mount Apo, the highest peak in the Philippines, Davao also offers nature reserves, cultural sites, and bustling markets.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row my-4">
+                     <div class="col-12 position-relative">
+                        <img src="assets/Infographic1.png" class="img-fluid rounded w-100" alt="Infographic1" style="height: 80vh; object-fit: cover;">
+                        <div class="position-absolute" style="top: 93%;left: 50%;transform:translate(-50%,-50%);">
+                           <button type="button" class="btn btn-primary rounded-pill border border-primary" style="padding: 14px 28px; font-size: 18px;">Book Now</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Panglao.jpg" class="img-fluid rounded w-100" alt="Panglao" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">11.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Panglao Island</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">Located near Bohol, Panglao offers stunning beaches, excellent diving spots, and luxurious resorts perfect for a peaceful beach getaway.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Taal Lake.jpg" class="img-fluid rounded w-100" alt="Taal" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">12.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Batangas</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Known for its dive spots like Anilao and the picturesque Taal Lake, Batangas is a popular destination for both adventurers and weekend travelers.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Anawangin.jpg" class="img-fluid rounded w-100" alt="Anawangin" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">13.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Zambales</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Zambales is known for its beaches and coves, particularly Anawangin Cove and Nagsasa Cove, where visitors can camp and enjoy the pristine coastline.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Sagada.jpg" class="img-fluid rounded w-100" alt="Sagada" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">14.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Sagada</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Famous for its hanging coffins, Sagada is a cool mountain town that offers hiking, spelunking, and the ethereal sunrise at Kiltepan Peak.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Camiguin.jpg" class="img-fluid rounded w-100" alt="Camiguin" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">15.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Camiguin</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">Often referred to as the "Island Born of Fire" due to its many volcanoes, Camiguin is also known for its hot and cold springs, waterfalls, and white-sand islets.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Subic.jpg" class="img-fluid rounded w-100" alt="Subic" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">16.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Subic Bay</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">A former U.S. naval base turned into a tourist destination, Subic offers adventure parks, diving sites, and duty-free shopping.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/manila.jpg" class="img-fluid rounded w-100" alt="Manila" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">17.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Manila</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">The bustling capital of the Philippines, Manila is a mix of old and new with historic sites like Intramuros, modern shopping malls, and a vibrant nightlife.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/La-Union.jpg" class="img-fluid rounded w-100" alt="La Union" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">18.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">La Union</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">A top surfing destination in the north, La Union offers consistent waves, hip beach resorts, and a chill vibe perfect for beach lovers and surfers.</p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Puerto Galera.jpg" class="img-fluid rounded w-100" alt="Puerto Galera" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">19.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Puerto Galera</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Located on Mindoro Island, Puerto Galera is known for its beaches, coral reefs, and dive spots. It’s also a popular destination for weekend getaways from Manila.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-water"></i> Rafting
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-flower3"></i> Spas
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Infographic Card-->
+                  <div class="row my-3">
+                     <div class="col-12">
+                        <div class="rounded border d-flex flex-column flex-md-row justify-content-start align-items-center h-auto" style="background-color: #fff;">
+                           <img src="assets/Casa Amara .jpg" class="img-fluid rounded m-4" alt="Casa Amara" style="height: 140px; width: 140px; object-fit: cover; transform: rotate(-4deg);">
+                           <div class="flex-grow-1 d-flex flex-column justify-content-between align-self-center">
+                              <p class="fs-4 m-0">Discover Your Next Adventure</p>
+                              <h6 class="text-muted mt-2">
+                                 Explore the world's most breathtaking destinations. From hidden gems to iconic landmarks, embark on a journey tailored to your travel dreams. Whether it's a relaxing getaway or an adrenaline-filled adventure, the perfect trip awaits.
+                              </h6>
+                           </div>
+                           <div class="p-3 d-flex justify-content-center align-self-end">
+                              <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-4 py-2 ms-auto" style="white-space: pre;"> View More</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row align-items-start py-4">
+                     <div class="col-md-6 col-12">
+                        <img src="assets/Tuguegarao.jpg" class="img-fluid rounded w-100" alt="Tuguegarao" style="min-height: 60vh;">
+                     </div>
+                     <div class="col-md-6 col-12 mt-4 mt-md-0">
+                        <h5 class="text-dark m-0">20.</h5>
+                        <div class="d-flex align-items-center flex-wrap">
+                           <p class="lead fw-bold" style="font-size: 2.1rem;">Tuguegarao</p>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 ms-auto mt-2 mt-md-0">
+                           <i class="bi bi-heart"></i> Save
+                           </button>
+                        </div>
+                        <p class="m-0 fw-lighter">
+                           Known for its historic churches, caves, and hot springs, Tuguegarao also serves as the gateway to the Cagayan Valley and northern Philippines.
+                        </p>
+                        <p class="mt-4">Great for</p>
+                        <div class="d-flex flex-wrap">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-geo-alt-fill"></i> Ports of call tours
+                           </button>
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-3 me-2 mt-2 disabled">
+                           <i class="bi bi-clock-history"></i> Full-day tours
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Explore Cards -->
+         <section>
+            <div class="container-fluid">
+            <div class="container">
+               <div class="row align-items-center">
+                  <div style="width: 70%;">
+                     <h2 class="text-dark fw-bolder my-4" style="font-size: 1.4rem;">Explore all top categories.</h2>
+                  </div>
+               </div>
+               <div class="row align-items-center g-3">
+                  <div class="col-md-6 position-relative">
+                     <img src="assets/manila.jpg" class="img-fluid w-100 rounded" alt="manila" style="height: 50vh;object-fit: cover;">
+                     <h1 class="position-absolute bottom-0 text-light fw-bold m-3" style="backdrop-filter: blur(2px);">Destinations <br> Overview</h1>
+                  </div>
+                  <div class="col-md-6 position-relative">
+                     <img src="assets/Panglao.jpg" class="img-fluid w-100 rounded" alt="manila" style="height: 50vh;object-fit: cover;">
+                     <h1 class="position-absolute bottom-0 text-light fw-bold m-3" style="backdrop-filter: blur(2px);">Beaches <br> Overview</h1>
+                  </div>
+                  <div class="col-md-4 position-relative">
+                     <img src="assets/shangrila.jpg" class="img-fluid rounded" alt="manila" style="height: 50vh;object-fit: cover;">
+                     <h1 class="position-absolute bottom-0 text-light fw-bold m-3" style="backdrop-filter: blur(2px);">Hotels <br> Overview</h1>
+                  </div>
+                  <div class="col-md-4 position-relative">
+                     <img src="assets/Vigan.jpg" class="img-fluid rounded" alt="manila" style="height: 50vh;object-fit: cover;">
+                     <h1 class="position-absolute bottom-0 text-light fw-bold m-3" style="backdrop-filter: blur(2px);">Things To Do <br> Overview</h1>
+                  </div>
+                  <div class="col-md-4 position-relative">
+                     <img src="assets/baguio_city.jpg" class="img-fluid rounded" alt="manila" style="height: 50vh;object-fit: cover;">
+                     <h1 class="position-absolute bottom-0 text-light fw-bold m-3" style="backdrop-filter: blur(2px);">Restaurants <br> Overview</h1>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Infographic Card-->
+         <section>
+            <div class="container">
+               <div class="row my-5">
+                  <div class="col-12">
+                     <div class="rounded border d-flex flex-column flex-md-row justify-content-start align-items-center h-auto" style="background-color: #fff;">
+                        <img src="assets/Sagada.jpg" class="img-fluid rounded m-4" alt="Sagada" style="height: 140px; width: 140px; object-fit: cover; transform: rotate(-4deg);">
+                        <div class="flex-grow-1 d-flex flex-column justify-content-between align-self-center">
+                           <p class="fs-4 m-0">Vacation Time</p>
+                           <h6 class="text-muted mt-2">
+                              Taking time off for rest and relaxation.
+                           </h6>
+                        </div>
+                        <div class="p-3 d-flex justify-content-center align-self-end">
+                           <button type="button" class="btn btn-outline-primary rounded-pill border border-primary px-4 py-2 ms-auto" style="white-space: pre;"> See More</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- footer -->
+         <section>
+            <div class="container-fluid pt-4" style="background-color: #fff;">
+               <div class="container">
+                  <div class="row align-items-start">
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Support</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Coronavirus (COVID-19) FAQs</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Manage your trips</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Contact Customer Service</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Safety resource centre</a>
+                     </div>
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Discover</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Genius loyalty programme</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Seasonal and holiday deals</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Travel articles</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Journey for Business</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Traveller Review Awards</a>
+                     </div>
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Terms & Settings</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Privacy & cookies</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Terms and conditions</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Partner dispute</a>
+                     </div>
+                     <div class="col d-flex flex-column mb-5">
+                        <p class="m-0" style="font-size: 0.9rem;">About</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">About Journey</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">How we work</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Press centre</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Careers</a>
+                     </div>
+                     <hr>
+                     <p class="text-center lead" style="font-size: 0.8rem;">Journey is part of Travel Innovations Inc., a premier provider of online travel and related services worldwide. <br>© 2024 Journey™. All rights reserved.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <!-- Boostrap CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <!-- Pikaday calendar -->
+      <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+      <script>
+         var picker = new Pikaday({ 
+             field: document.getElementById('datepicker'),
+             altInput: true,
+             altFormat: "F j, Y",
+             dateFormat: "Y-m-d",
+         });
+         var picker = new Pikaday({ 
+             field: document.getElementById('datepicker1'),
+             altInput: true,
+             altFormat: "F j, Y",
+             dateFormat: "Y-m-d",
+         });
+      </script>
+      <!-- Slick -->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <!-- Slick JS File -->
+      <script src="slick.js"></script>
+   </body>
+</html>

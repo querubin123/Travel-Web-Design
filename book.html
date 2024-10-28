@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap CDN -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <!-- Boostrap Icons -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <!-- Pikaday CSS theme -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+      <!-- Slick -->
+      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+      <title>Document</title>
+      <style>
+         *,*::before,*::after{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: "Lato", sans-serif;
+         font-weight:600;
+         font-style: normal;
+         }
+         .bg-header{
+         height: 100vh;
+         width: 100%;
+         background-image:url('assets/header-BG2.jpg');
+         background-size: cover;
+         display: flex;
+         align-items: center;
+         }
+         .form-control:focus, .form-select:focus, .btn:focus {
+         box-shadow: none;
+         outline: none;
+         border: none;
+         }
+         .btn:not(:focus), .form-control:not(:focus), .form-select:not(:focus){
+         border: none;
+         }
+         @media screen and (min-width:992px)  {
+         .form-select{
+         width: 22%;
+         }
+         }
+         .image-slider,.image-slider1{
+         display: flex;
+         justify-content: center;
+         }
+         .arrow-left, .arrow-right {
+         position: absolute;
+         top: 43%; 
+         transform: translateY(-50%); 
+         font-size: 2rem; 
+         color: #F26600; 
+         z-index: 1001; 
+         cursor: pointer;
+         }
+         .arrow-left {
+         left: 0; 
+         }
+         .arrow-right {
+         right: 0;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Nav bar -->
+      <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-light">
+         <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="logo image" style="height:55px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu" aria-controls="navbarmenu" aria-expanded="false">
+            <span><i class="bi bi-list"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarmenu">
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="index.html" style="font-size: 1rem;color: #F26600;">Home</a>
+                  </li>
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="destinations.html" style="font-size: 1rem;color: #F26600;">Destinations</a>
+                  </li>
+                  <li class="nav-item pe-4">
+                     <a class="nav-link" href="book.html" style="font-size: 1rem;color: #F26600;">Book</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="contact.html" style="font-size: 1rem;color: #F26600;">Contact</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <!-- Search bar -->
+      <div class="container-fluid bg-header">
+         <div class="container">
+            <h1 class="text-dark text-center p-0 m-0 fw-bolder">Discover Amazing Places</h1>
+            <p class="lead text-dark text-center p-0">Book destinations to inspire your next trip.</p>
+            <div class="row g-2 p-3 bg-light d-flex align-items-center">
+               <!-- Search Destinations -->
+               <div class="form-floating mx-auto col-12 col-md-12 col-lg-4">
+                  <input type="text" id="searchDestinations" class="form-control rounded" placeholder="Search Destinations">
+                  <label for="searchDestinations" class="ps-3">Search Destinations</label>
+               </div>
+               <!-- Check-in -->
+               <div class="form-floating mx-auto col-12 col-md-6 col-lg-2">
+                  <input type="text" id="datepicker" class="form-control" placeholder="Check-in">
+                  <label for="datepicker" class="ps-3">Check-in</label>
+               </div>
+               <!-- Check-out -->
+               <div class="form-floating mx-auto ms-lg-0 col-12 col-md-6 col-lg-2">
+                  <input type="text" id="datepicker1" class="form-control" placeholder="Check-out">
+                  <label for="datepicker" class="ps-3">Check-out</label>
+               </div>
+               <!-- Dropdown -->
+               <select class="form-select fw-bold mx-auto col-lg-1" style="height: 58px;color: rgb(33, 37, 41);">
+                  <option value="" selected>Solo Traveler</option>
+                  <option value="">Couple/Pair</option>
+                  <option value="">Family Travelers</option>
+                  <option value="">Group Travelers</option>
+                  <option value="">Business Travelers</option>
+               </select>
+               <!-- Search Button -->
+               <button class="btn mx-auto col-12 col-md-12 fw-bold col-lg-auto text-light px-4" style="background-color: #F26600; height: 58px;">Search</button>
+            </div>
+            <div class="row g-2 p-3 bg-light d-flex justify-content-center align-items-center">
+               <!-- Explore Cities Card -->
+               <div class="col-5 d-flex">
+                  <div class="card border-0 d-flex justify-content-between align-items-center flex-md-row flex-grow-1 ps-4 pe-3 shadow" style="cursor: pointer;">
+                     <img src="assets/travel.png" class="img-fluid" style="width: 70px;" alt="travelicon">
+                     <p class="card-title lead fs-5 text-center">Explore <span class="text-primary text-center">the Cities</span></p>
+                     <button class="btn text-light p-2" style="background-color: #F26600">
+                     View
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- main -->
+      <main class="bg-light">
+         <section>
+            <div class="container-fluid pt-5">
+               <div class="container">
+                  <div class="row d-flex justify-content-center align-items-center">
+                     <h2 class="text-dark text-center fw-bolder mb-4" style="font-size: 1.4rem;">Popular Destinations</h2>
+                     <div class="btn-group text-center d-flex flex-column flex-md-row" style="width: 70%; white-space: pre;">
+                        <button class="btn btn-outline-primary active rounded-pill me-2 py-2 mb-1"> Cebu City</button>
+                        <button class="btn btn-outline-primary border border-primary rounded-pill me-2 py-2 mb-1">Metro Manila</button>
+                        <button class="btn btn-outline-primary border border-primary rounded-pill me-2 py-2 mb-1">Siargao</button>
+                        <button class="btn btn-outline-primary border border-primary rounded-pill me-2 py-2 mb-1">Batangas City</button>    <button class="btn btn-outline-primary border border-primary rounded-pill py-2 mb-1">Baguio City</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Card Section -->
+         <section>
+         <div class="container">
+            <div class="row mt-2 g-3">
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/tagaytay.jpg" class="img-fluid rounded" alt="tagaytay" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Tagaytay
+                     </p>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/batangas.jpg" class="img-fluid rounded" alt="batangas" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Batangas
+                     </p>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/baguio_city.jpg" class="img-fluid rounded" alt="Baguio" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Baguio
+                     </p>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/Siargao.jpg" class="img-fluid rounded" alt="Siargao" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Siargao
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="row mt-1 align-items-center g-3">
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/Vigan.jpg" class="img-fluid rounded" alt="Vigan" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Vigan
+                     </p>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/Subic.jpg" class="img-fluid rounded" alt="Subic" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Subic
+                     </p>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/Cebu.jpg" class="img-fluid rounded" alt="Cebu" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Cebu
+                     </p>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="rounded border-0 d-flex flex-column h-100 position-relative">
+                     <img src="assets/coron.jpg" class="img-fluid rounded" alt="Coron" style="height: 190px; object-fit: cover;filter: brightness(70%);">
+                     <p class="position-absolute fs-4 text-light text-center" style="bottom: 0;left: 50%; transform: translate(-50%,-10%);">
+                        Coron
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="text-center"><button class="btn btn-outline-primary border border-primary rounded-pill px-4 py-2 mt-4">Most Visited Cities</button></div>
+            <div class="row mt-5 justify-content-center">
+               <h2 class="text-dark text-center fw-bolder mb-4" style="font-size: 1.4rem;">Curated Travel Experiences</h2>
+            </div>
+            <div class="row mt-2 justify-content-center">
+               <div class="col-md-4 mb-2">
+                  <div class="card rounded border-0 d-flex flex-column h-100">
+                     <img src="assets/shangrila.jpg" class="img-fluid rounded" alt="shangrila" style="height: 170px; object-fit: cover;">
+                     <div class="card-body" style="flex: 1;">
+                        <div class="card-title">
+                           Beautiful, comfortable rooms with friendly staff. Worth the splurge!
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-4">
+                           <img src="assets/man.png" class="img-fluid me-2" alt="avatar_icon" style="height: 6%; width: 6%;">
+                           <h5 class="card-subtitle text-muted me-auto my-0" style="font-size: 0.9rem;">Shane</h5>
+                           <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                           <h5 class="card-subtitle text-muted my-0" style="font-size: 0.9rem;">6</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 mb-2">
+                  <div class="card rounded border-0 d-flex flex-column h-100">
+                     <img src="assets/Red Planet Cebu.jpg" class="img-fluid rounded" alt="Red Planet Cebu" style="height: 170px; object-fit: cover;">
+                     <div class="card-body" style="flex: 1;">
+                        <div class="card-title">
+                           Affordable, clean, and comfortable rooms. Great value for money.
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-4">
+                           <img src="assets/man.png" class="img-fluid me-2" alt="avatar_icon" style="height: 6%; width: 6%;">
+                           <h5 class="card-subtitle text-muted me-auto my-0" style="font-size: 0.9rem;">Mike</h5>
+                           <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                           <h5 class="card-subtitle text-muted my-0" style="font-size: 0.9rem;">243</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 mb-2">
+                  <div class="card rounded border-0 d-flex flex-column h-100">
+                     <img src="assets/El Nido Resorts - Lagen Island.jpg" class="img-fluid rounded" alt="El Nido Resorts - Lagen Island" style="height: 170px; object-fit: cover;">
+                     <div class="card-body" style="flex: 1;">
+                        <div class="card-title">
+                           Island hopping tours are fantastic. Lots of beautiful beaches and lagoons.
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-4">
+                           <img src="assets/man.png" class="img-fluid me-2" alt="avatar_icon" style="height: 6%; width: 6%;">
+                           <h5 class="card-subtitle text-muted me-auto my-0" style="font-size: 0.9rem;">Michael</h5>
+                           <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                           <h5 class="card-subtitle text-muted my-0" style="font-size: 0.9rem;">23</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row mt-5 justify-content-center">
+               <div class="col-md-4 mb-2">
+                  <div class="card rounded border-0 d-flex flex-column h-100">
+                     <img src="assets/amanpulo.jpg" class="img-fluid rounded" alt="amanpulo" style="height: 170px; object-fit: cover;">
+                     <div class="card-body" style="flex: 1;">
+                        <div class="card-title">
+                           Peaceful and scenic – perfect for relaxing and unwinding.
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-4">
+                           <img src="assets/man.png" class="img-fluid me-2" alt="avatar_icon" style="height: 6%; width: 6%;">
+                           <h5 class="card-subtitle text-muted me-auto my-0" style="font-size: 0.9rem;">Anonymous</h5>
+                           <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                           <h5 class="card-subtitle text-muted my-0" style="font-size: 0.9rem;">79</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 mb-2">
+                  <div class="card rounded border-0 d-flex flex-column h-100">
+                     <img src="assets/The Peninsula Manila.jpg" class="img-fluid rounded" alt="The Peninsula Manila" style="height: 170px; object-fit: cover;">
+                     <div class="card-body" style="flex: 1;">
+                        <div class="card-title">
+                           Warm and welcoming locals. Great hospitality all around.
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-4">
+                           <img src="assets/man.png" class="img-fluid me-2" alt="avatar_icon" style="height: 6%; width: 6%;">
+                           <h5 class="card-subtitle text-muted me-auto my-0" style="font-size: 0.9rem;">Anonymous</h5>
+                           <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                           <h5 class="card-subtitle text-muted my-0" style="font-size: 0.9rem;">61</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 mb-2">
+                  <div class="card rounded border-0 d-flex flex-column h-100">
+                     <img src="assets/City Garden Grand Hotel.jpg" class="img-fluid rounded" alt="City Garden Grand Hotel" style="height: 170px; object-fit: cover;">
+                     <div class="card-body" style="flex: 1;">
+                        <div class="card-title">
+                           Ideal for snorkeling, diving, and kayaking. Lots to explore!
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-4">
+                           <img src="assets/man.png" class="img-fluid me-2" alt="avatar_icon" style="height: 6%; width: 6%;">
+                           <h5 class="card-subtitle text-muted me-auto my-0" style="font-size: 0.9rem;">Anonymous</h5>
+                           <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                           <h5 class="card-subtitle text-muted my-0" style="font-size: 0.9rem;">24</h5>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="text-center"><button class="btn btn-outline-primary border border-primary rounded-pill px-4 py-2 mt-4">Further Adventures</button></div>
+            <div class="row mt-5 justify-content-center">
+               <h2 class="text-dark text-center fw-bolder mb-4" style="font-size: 1.4rem;">Travel Highlights</h2>
+               <!-- Carousel Section -->
+               <div class="col align-items-center position-relative h-100 image-slider1 mb-4">
+                  <div>
+                     <img src="assets/batangas.jpg" class="rounded img-fluid" alt="batangas" style="height: 250px; width: 230px;"> 
+                     <div class="mt-3">Staff went above and beyond. Made the trip unforgettable!</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Anonymous</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">61</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/boracay1.jpg" class="rounded img-fluid" alt="boracay" style="height: 250px; width: 230px;">
+                     <div class="mt-3">Perfectly situated with easy access to everything. Super...</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Carla</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">23</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/kalibo.jpg" class="rounded img-fluid " alt="kalibo" style="height: 250px; width: 230px;">
+                     <div class="mt-3">Affordable without sacrificing quality. Definitely worth it!</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Dane</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">433</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/pg.jpg" class="rounded img-fluid" alt="puerto galera" style="height: 250px; width: 230px;">
+                     <div class="mt-3">Rooms were spotless and comfortable. Great for relaxing.</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">leo</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">7</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/caticlan.jpg" class="rounded img-fluid" alt="caticlan" style="height: 250px; width: 230px;">            
+                     <div class="mt-3">Affordable without sacrificing quality. Definitely worth it!</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Glaiza</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">12</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/baler.jpg" class="rounded img-fluid" alt="baler" style="height: 250px; width: 230px;">
+                     <div class="mt-3">Breathtaking scenery that took my breath away!</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Diana</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">2311</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/guimaras.jpg" class="rounded img-fluid" alt="guimaras" style="height: 250px; width: 230px;">            
+                     <div class="mt-3">Perfect for families! Lots of activities for kids and adults.</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Anonymous</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">356</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/coron.jpg" class="rounded img-fluid" alt="coron" style="height: 250px; width: 230px;">
+                     <div class="mt-3">Easy to get around. Local transport options are great.</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Noren</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">617</h5>
+                     </div>
+                  </div>
+                  <div>
+                     <img src="assets/alaminos.jpg" class="rounded img-fluid" alt="alaminos" style="height: 250px; width: 230px;">
+                     <div class="mt-3">A peaceful getaway. Ideal for unwinding and recharging.</div>
+                     <div class="d-flex justify-content-start align-items-center mt-4">
+                        <img src="assets/user.png" class="img-fluid me-2" alt="user_icon" style="height: 10%; width: 10%;">
+                        <h5 class="text-muted me-auto my-0" style="font-size: 0.9rem;">Anonymous</h5>
+                        <img src="assets/like.png" class="img-fluid me-2" alt="like_icon" style="height: 5%; width: 5%;">
+                        <h5 class="text-muted my-0" style="font-size: 0.9rem;margin-right: 30px;">4521</h5>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         </div>   
+         <div class="text-center"><button class="btn btn-outline-primary border border-primary rounded-pill px-4 py-2 mb-5">More Highlights</button></div>
+         <div class="accordion accordion-flush container mb-5" id="accordionExample">
+            <div class="accordion-item">
+               <h2 class="accordion-header" id="headingOne">
+                  <div class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                     Highlights of Popular Travel Spots
+                  </div>
+               </h2>
+               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                     Explore must-see spots and unique experiences in top travel destinations! From iconic landmarks to local favorites, discover what makes each place special. Whether you're after adventure, relaxation, or culture, these highlights offer something for every traveler.
+                  </div>
+               </div>
+            </div>
+            <div class="accordion-item">
+               <h2 class="accordion-header" id="headingTwo">
+                  <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                     Best Travel Tales
+                  </div>
+               </h2>
+               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                     Dive into inspiring stories from travelers around the world! These top travel tales capture the magic, adventure, and unforgettable moments that make each journey unique. Perfect for a dose of wanderlust!
+                  </div>
+               </div>
+            </div>
+            <div class="accordion-item">
+               <h2 class="accordion-header" id="headingThree">
+                  <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                     Top Picks List
+                  </div>
+               </h2>
+               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                     Explore our curated list of top picks, featuring the best choices across popular categories! From must-haves to hidden gems, these favorites are sure to impress. Perfect for finding your next go-to!
+                  </div>
+               </div>
+            </div>
+            <div class="accordion-item">
+               <h2 class="accordion-header" id="headingFour">
+                  <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                     Popular Travel Stories
+                  </div>
+               </h2>
+               <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                     Discover inspiring journeys from around the globe! These popular travel stories capture unforgettable adventures, unique cultures, and the beauty of travel. Perfect for fueling your wanderlust!
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- footer -->
+         <section>
+            <div class="container-fluid pt-4" style="background-color: #fff;">
+               <div class="container">
+                  <div class="row align-items-start">
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Support</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Coronavirus (COVID-19) FAQs</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Manage your trips</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Contact Customer Service</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Safety resource centre</a>
+                     </div>
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Discover</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Genius loyalty programme</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Seasonal and holiday deals</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Travel articles</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Journey for Business</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Traveller Review Awards</a>
+                     </div>
+                     <div class="col d-flex flex-column">
+                        <p class="m-0" style="font-size: 0.9rem;">Terms & Settings</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Privacy & cookies</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Terms and conditions</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Partner dispute</a>
+                     </div>
+                     <div class="col d-flex flex-column mb-5">
+                        <p class="m-0" style="font-size: 0.9rem;">About</p>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">About Journey</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">How we work</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Press centre</a>
+                        <a href="" class="lead mt-2 text-dark" style="font-size: 0.9rem;text-decoration: none;">Careers</a>
+                     </div>
+                     <hr>
+                     <p class="text-center lead" style="font-size: 0.8rem;">Journey is part of Travel Innovations Inc., a premier provider of online travel and related services worldwide. <br>© 2024 Journey™. All rights reserved.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <!-- Boostrap CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <!-- Pikaday calendar -->
+      <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+      <script>
+         var picker = new Pikaday({ 
+             field: document.getElementById('datepicker'),
+             altInput: true,
+             altFormat: "F j, Y",
+             dateFormat: "Y-m-d",
+         });
+         var picker = new Pikaday({ 
+             field: document.getElementById('datepicker1'),
+             altInput: true,
+             altFormat: "F j, Y",
+             dateFormat: "Y-m-d",
+         });
+      </script>
+      <!-- Slick -->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <!-- Slick JS File -->
+      <script src="slick.js"></script>
+   </body>
+</html>
